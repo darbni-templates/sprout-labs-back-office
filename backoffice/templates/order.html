@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Order {{ order["number"] }}{% endblock %}
+{% block content %}
+<h1>Order {{ order["number"] }}</h1>
+<p>Date: {{ order["created_at"]|date }}</p>
+<p>Customer: {{ order["customer"] }} ({{ order["email"] }})</p>
+<p>Total: {{ order["total_fils"]|bhd }}</p>
+<p>Status: {{ order["status"] }}</p>
+{% if next_status %}
+<form action="/orders/{{ order['id'] }}/status" method="post">
+  <input type="hidden" name="status" value="{{ next_status }}">
+  <button>Mark as {{ next_status }}</button>
+</form>
+{% endif %}
+<p><a href="/orders/{{ order['id'] }}/invoice">Invoice</a></p>
+{% if not order["archived"] %}
+<form action="/orders/{{ order['id'] }}/delete" method="post"
+      onsubmit="return confirm('Delete this order? This cannot be undone.')">
+  <button class="danger">Delete</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Invoice {{ order["number"] }}{% endblock %}
+{% block content %}
+<h1>Invoice for order {{ order["number"] }}</h1>
+<p>Issued: {{ issued }}</p>
+<p>Billed to: {{ order["customer"] }} ({{ order["email"] }})</p>
+<table>
+  <tr><td>Before VAT</td><td>{{ net }}</td></tr>
+  <tr><td>VAT 10%</td><td>{{ vat }}</td></tr>
+  <tr><td>Total</td><td>{{ total }}</td></tr>
+</table>
+<p>Leaf & Pot, Building 210, Road 2803, Seef, Bahrain</p>
+{% endblock %}

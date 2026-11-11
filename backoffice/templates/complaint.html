@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Complaint{% endblock %}
+{% block content %}
+<h1>Complaint from {{ complaint["customer"] }}</h1>
+<p>Order: <a href="/orders/{{ complaint['order_id'] }}">{{ complaint["order_number"] }}</a></p>
+<p>Received: {{ complaint["created_at"]|date }}</p>
+<blockquote>{{ complaint["message"] }}</blockquote>
+<p><a class="button" href="mailto:{{ complaint['email'] }}">Reply by email</a></p>
+{% endblock %}

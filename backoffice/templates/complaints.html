@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Complaints{% endblock %}
+{% block content %}
+<h1>Complaints</h1>
+<table>
+  <tr><th>Date</th><th>Customer</th><th>Order</th><th>Complaint</th></tr>
+  {% for complaint in complaints %}
+  <tr>
+    <td>{{ complaint["created_at"]|date }}</td>
+    <td>{{ complaint["customer"] }}</td>
+    <td>{{ complaint["order_number"] }}</td>
+    <td><a href="/complaints/{{ complaint['id'] }}">{{ complaint["message"] }}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

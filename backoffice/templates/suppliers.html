@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Suppliers{% endblock %}
+{% block content %}
+<h1>Suppliers</h1>
+<p><a class="button" href="/suppliers/new">Add a supplier</a></p>
+<table>
+  <tr><th>Name</th><th>Email</th><th>Phone</th><th>Fax number</th></tr>
+  {% for supplier in suppliers %}
+  <tr>
+    <td>{{ supplier["name"] }}</td>
+    <td>{{ supplier["email"] }}</td>
+    <td>{{ supplier["phone"] }}</td>
+    <td>{{ supplier["fax"] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

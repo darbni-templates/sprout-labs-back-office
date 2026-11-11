@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<ul class="numbers">
+  <li>Orders: {{ order_count }}</li>
+  <li>Total sales: {{ total_sales }}</li>
+  <li>Average order: {{ average_order }}</li>
+  <li>Waiting to ship: {{ to_ship }}</li>
+  <li>Complaints: {{ complaint_count }}</li>
+</ul>
+{% endblock %}

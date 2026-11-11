@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Back office{% endblock %} | Leaf & Pot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <a class="logo" href="/">Leaf & Pot back office</a>
+    {% if staff %}
+    <nav>
+      <a href="/orders">Orders</a>
+      <a href="/customers">Customers</a>
+      <a href="/stock">Stock</a>
+      <a href="/suppliers">Suppliers</a>
+      <a href="/complaints">Complaints</a>
+      <span class="who">Signed in as {{ staff["name"] }}</span>
+      <form action="/logout" method="post"><button>Log out</button></form>
+    </nav>
+    {% endif %}
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

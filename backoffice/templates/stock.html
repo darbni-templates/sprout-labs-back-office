@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Stock{% endblock %}
+{% block content %}
+<h1>Stock</h1>
+<p class="alert">{{ alert }}</p>
+<table>
+  <tr><th>Plant</th><th>Price</th><th>Stock</th><th>Change</th></tr>
+  {% for product in products %}
+  <tr>
+    <td>{{ product["name"] }}</td>
+    <td>{{ product["price_fils"]|bhd }}</td>
+    <td>{{ product["stock"] }} in stock</td>
+    <td>
+      <form action="/stock/{{ product['id'] }}" method="post">
+        <input name="stock" value="{{ product['stock'] }}" size="4">
+        <input name="price_fils" value="{{ product['price_fils'] }}" size="7"> fils
+        <button>Save</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
